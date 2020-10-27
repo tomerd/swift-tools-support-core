@@ -1,7 +1,7 @@
 /*
  This source file is part of the Swift.org open source project
 
- Copyright (c) 2014 - 2017 Apple Inc. and the Swift project authors
+ Copyright (c) 2014 - 2020 Apple Inc. and the Swift project authors
  Licensed under Apache License v2.0 with Runtime Library Exception
 
  See http://swift.org/LICENSE.txt for license information
@@ -12,7 +12,7 @@ import XCTest
 import TSCBasic
 import TSCTestSupport
 
-import TSCUtility
+@testable import TSCUtility
 
 final class PkgConfigParserTests: XCTestCase {
 
@@ -109,6 +109,8 @@ final class PkgConfigParserTests: XCTestCase {
     }
 
     func testBrewPrefix() throws {
+        PCFileFinder.resetCachedPkgConfigPaths()
+
         mktmpdir { tmpPath in
             let fakePkgConfig = tmpPath.appending(components: "bin", "pkg-config")
             try localFileSystem.createDirectory(fakePkgConfig.parentDirectory)

@@ -70,6 +70,13 @@ public struct PCFileFinder {
             }
         }
     }
+    
+    /// Reset the cached `pkgConfigPaths` property, so that it will be evaluated
+    /// again when instantiating a `PCFileFinder()`.  This is intended only for
+    /// use by testing.
+    internal static func resetCachedPkgConfigPaths() {
+        PCFileFinder.pkgConfigPaths = nil
+    }
 
     public func locatePCFile(
         name: String,
