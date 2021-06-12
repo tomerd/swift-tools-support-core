@@ -32,8 +32,6 @@ add_library(TSCBasic
   Lock.swift
   OSLog.swift
   ObjectIdentifierProtocol.swift
-  OrderedDictionary.swift
-  OrderedSet.swift
   WritableByteStream.swift
   Path.swift
   PathShims.swift
@@ -57,6 +55,7 @@ target_compile_options(TSCBasic PUBLIC
   # Ignore secure function warnings on Windows.
   "$<$<PLATFORM_ID:Windows>:SHELL:-Xcc -D_CRT_SECURE_NO_WARNINGS>")
 target_link_libraries(TSCBasic PUBLIC
+  OrderedCollections
   TSCLibc)
 target_link_libraries(TSCBasic PRIVATE
    TSCclibc)
